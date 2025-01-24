@@ -22,17 +22,14 @@ const TaskForm: FC<TaskFormProps> = ({ taskData, edit }) => {
   const { addTask, updateTask } = useTasks();
 
   const handleTitleChange = (val: string) => {
-    console.log(val);
     setTitle(val);
   };
   const handleColorChange = (val: number) => {
-    console.log(val);
     setColor(val);
   };
 
   const handleSubmit = async () => {
     if (edit) {
-      console.log("edit");
       await updateTask({ title, color: colors[color], id: taskData?.id });
     } else {
       await addTask({ title, color: colors[color] });
