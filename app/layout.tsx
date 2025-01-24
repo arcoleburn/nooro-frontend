@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Header from "../src/shared/components/Header";
+import { TaskProvider } from "shared/TaskProvider/TaskProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,9 +27,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col  items-center h-screen`}
       >
-        {children}
+        <Header />
+        <div className="flex flex-col w-full md:w-[736px] mx-auto h-screen items-center px-4">
+          {/* <div className="flex flex-col w-[736px] mx-auto"> */}
+          <TaskProvider>{children}</TaskProvider>
+        </div>
       </body>
     </html>
   );
